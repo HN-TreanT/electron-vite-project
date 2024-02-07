@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { Form, Row, Col, Modal, Input, DatePicker, Select, Button, Switch, message,Table } from 'antd'
+import { Form, Row, Col, Modal, Select, Button, Switch, message,Table } from 'antd'
 import { invoiceServices } from "../../../../../utils/services/invoiceService";
 import { ColumnProps } from "antd/es/table";
 import { convertPrice } from "../../../../../utils/helper/convertPrice";
 import { tableServices } from "../../../../../utils/services/tableServices";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import useAction from "../../../../../redux/useActions";
 const FormItem = Form.Item
 
@@ -93,17 +93,18 @@ const ModalCombineOrder = (props: Props) => {
                 
               } else {
                  setLoading(false)
-                 message.error("Không tìm thầy yêu cầu")
+                 messageApi.error("Không tìm thầy yêu cầu")
               }
         }).catch((err: any) =>  {
             console.log(err)
             setLoading(false)
-            message.error("Không tìm thầy yêu cầu")
+            messageApi.error("Không tìm thầy yêu cầu")
         })
        
     }
     
     const onFinish = async (values: any) => { 
+        console.log("check", values)
        const dataSubmit = {
         isCombineTable:checked,
         id_invoice_old: id_invoice_old,
@@ -130,12 +131,12 @@ const ModalCombineOrder = (props: Props) => {
                   }))
                   handleModal()
                   form.resetFields()
-                message.success("Gộp đơn thành công ")
+                 messageApi.success("Gộp đơn thành công ")
             }
 
        }).catch((err: any) => {
           console.log(err)
-          message.error("Gộp đơn thất bại")
+          messageApi.error("Gộp đơn thất bại")
        })
 
        
@@ -147,7 +148,7 @@ const ModalCombineOrder = (props: Props) => {
             dataIndex: "ID",
             width: 30,
             align: 'center',
-            render: (text, record, index) => <span>{index + 1}</span>
+            render: (text, record, index) => <span>{index + 1}<p hidden>{text}{record}</p></span>
         },
         {
             title: "Tên mặt hàng",

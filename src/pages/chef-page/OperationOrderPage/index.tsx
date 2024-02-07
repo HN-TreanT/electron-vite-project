@@ -20,12 +20,11 @@ const IconTab = ({ icon, label, children }: any) => (
   </div>
 );
 
-interface props {
-  invoice_details: any[],
-  setInvoiceDetails: any,
-  hanldeSetInvoiceDetails: any,
-}
-const OperationOrderPage: React.FC<props> = ({invoice_details, setInvoiceDetails, hanldeSetInvoiceDetails}) => {
+// interface props {
+//   invoice_details: any[],
+//   setInvoiceDetails: any,
+// }
+const OperationOrderPage: React.FC = () => {
   
 
   return (
@@ -39,7 +38,7 @@ const OperationOrderPage: React.FC<props> = ({invoice_details, setInvoiceDetails
             key={"order"}
             className="tab-pane"
           >
-            <Order   invoice_details={invoice_details} setInvoiceDetails={setInvoiceDetails} />,
+            <Order />,
           </Tabs.TabPane>
       </Tabs>
     </div>

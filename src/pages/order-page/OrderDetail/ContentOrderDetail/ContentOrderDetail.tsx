@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState, useContext } from "react";
-import { Row, Col, Button, Modal, Tooltip, Select, Form, message, Space } from "antd";
+import { Row, Col, Button, Modal, Select, Form, message } from "antd";
 import "./ContentOrderDetail.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,8 +10,7 @@ import {
   faFolderMinus,
   faDownLeftAndUpRightToCenter,
   faArrowsLeftRightToLine,
-  faPlusCircle,
-  faPlusMinus
+  faPlusCircle
 
 } from "@fortawesome/free-solid-svg-icons";
 import ItemOrderDetail from "./ItemOrderDetail/ItemOrderDetail";
@@ -63,7 +62,7 @@ interface props {
 const ContentOrderDetail = (props: props) => {
   const {socket} = useContext(AppContext)
   const [form] = Form.useForm()
-  const {customers, invoice_details, setInvoiceDetails, handleSaveOrder, setCustomer} = props
+  const {customers, invoice_details, setInvoiceDetails, setCustomer} = props
   const [messageApi, contextHolder] = message.useMessage();
   
   const [openModalCombine, setOpenModalCombine] = useState(false)
@@ -189,6 +188,7 @@ const ContentOrderDetail = (props: props) => {
             if(res.status) {
                   await Promise.all(mapIdTables.map( async (item: any) => {
                     tableServices.update(item, {status: 0}).then((res: any) => {
+                         console.log(res)
                            dispatch(actions.TableFoodActions.loadData({
                                   page: 1,
                                 size: 12,
@@ -257,6 +257,7 @@ const ContentOrderDetail = (props: props) => {
           } ) :  []
          await Promise.all(mapIdTables.map( async (item: any) => {
             tableServices.update(item, {status: 0}).then((res: any) => {
+              console.log(res)
                     // getTable()
             }).catch((err: any) => {
               console.log(err)
@@ -270,7 +271,7 @@ const ContentOrderDetail = (props: props) => {
                   table: dataSubmit?.id_tables ? dataSubmit?.id_tables.join(",") : ""
                  })
                  ///
-                 message.success("Chỉnh sửa thành công")
+                 messageApi.success("Chỉnh sửa thành công")
                 invoiceServices.getById(res.data.id).then((res: any) => {
                       if(res.status) {
                         // const listDiv = document.querySelectorAll(".seselected_class")
@@ -301,13 +302,13 @@ const ContentOrderDetail = (props: props) => {
             }
         }).catch((err: any) => {
           console.log(err)
-            message.error("Chỉnh sửa thất bại")
+            messageApi.error("Chỉnh sửa thất bại")
         })
       } else {
 
        invoiceServices.create( dataSubmit).then((res: any) => {
           if (res.status) {
-          message.success("Thêm mới thành công")
+          messageApi.success("Thêm mới thành công")
               invoiceServices.getById(res.data.id).then((res: any) => {
                     if(res.status) {
                       socket.emit("change_order", {
@@ -334,7 +335,7 @@ const ContentOrderDetail = (props: props) => {
           }
       }).catch((err: any) => {
         console.log(err)
-          message.error("Thêm mới thất bại")
+          messageApi.error("Thêm mới thất bại")
       })
 
       }

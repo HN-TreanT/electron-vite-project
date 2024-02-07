@@ -1,16 +1,12 @@
 import React from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBellConcierge, faClock, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBellConcierge, faClock } from "@fortawesome/free-solid-svg-icons";
 import { DollarCircleFilled } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-import useAction from "../../../redux/useActions";
 import "./ItemOrder.scss";
-import { Col, Row, Tag, Typography } from "antd";
+import { Col, Row, Tag } from "antd";
 import { convertPrice } from "../../../utils/helper/convertPrice";
 const ItemOrder: React.FC<any> = ({ style, data }) => {
-  const actions = useAction();
-  const dispatch = useDispatch();
   const createdAt = new Date(data.createdAt);
   const now = new Date();
   let time = now.getTime() - createdAt.getTime();

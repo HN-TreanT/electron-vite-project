@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Menu, MenuProps, Pagination, Form, Input } from "antd"
+import { Row, Col, Menu, Pagination, Form, Input } from "antd"
 import "./Product.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,10 +18,9 @@ interface props {
   hanldeSetInvoiceDetails: any
 }
 const Product: React.FC<props> = (props) => {
-const {invoice_details, setInvoiceDetails, hanldeSetInvoiceDetails} = props
+const {invoice_details, setInvoiceDetails} = props
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
-  const [totalPage, setTotalPage] = useState<any>(8)
   const [products, setProducts] = useState([])
   const [categories, setCategoris] = useState([])
   const [name, setName] = useState<string>()
@@ -200,7 +199,7 @@ const {invoice_details, setInvoiceDetails, hanldeSetInvoiceDetails} = props
                       return (
                         <Col key={product?.IdProduct} span={6}>
                           {" "}
-                          <ItemProduct hanldeSetInvoiceDetails={hanldeSetInvoiceDetails} invoice_details={invoice_details} setInvoiceDetails={setInvoiceDetails} product={product} />
+                          <ItemProduct  invoice_details={invoice_details} setInvoiceDetails={setInvoiceDetails} product={product} />
                         </Col>
                       );
                     })

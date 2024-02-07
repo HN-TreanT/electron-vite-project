@@ -6,7 +6,6 @@ import ItemOrder from "../../ItemOrder/ItemOrder";
 import emptyOrder from "../../../../assets/empty-bill.svg"
 import { useDispatch, useSelector } from "react-redux";
 import useAction from "../../../../redux/useActions";
-import { invoiceServices } from "../../../../utils/services/invoiceService";
 import './Order.scss'
 // interface props {
 //     invoice_details: any[],

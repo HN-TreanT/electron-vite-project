@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
-import { Button, Drawer, Row, Col, Table, Form, InputNumber, Input, message } from "antd";
+import React, { Fragment, useState } from "react";
+import { Button, Drawer, Row, Col, Table, Form, InputNumber, message } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser } from "@fortawesome/free-regular-svg-icons";
 import { useDispatch, useSelector } from "react-redux";
@@ -90,7 +90,7 @@ const DrawerPayment: React.FC<Props> = ({ visible, setVisible, invoice_tables })
       setDateRa(now)
       invoiceServices.paymentInvoice(selectedOrder?.id, selectedOrder?.price).then((res: any) => {
           if(res.status) {
-            message.success("Thanh toán thành công")     
+            messageApi.success("Thanh toán thành công")     
             dispatch(actions.TableFoodActions.loadData({
               page: 1,
              size: 12,
@@ -110,14 +110,14 @@ const DrawerPayment: React.FC<Props> = ({ visible, setVisible, invoice_tables })
              setVisible(false);
              setHidden(true);
           } else {
-            message.error("Thanh toán thất bại")
+            messageApi.error("Thanh toán thất bại")
             // setVisible(false);
             // setHidden(true);
             setHidden(true)
           }
       }).catch((err: any) => {
         console.log(err)
-        message.error("Thanh toán thất bại")
+        messageApi.error("Thanh toán thất bại")
 
       })
      

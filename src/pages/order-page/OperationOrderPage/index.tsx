@@ -1,13 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { Button, Tabs } from "antd";
+import React from "react";
+import {  Tabs } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faUtensils,
   faFileInvoiceDollar,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch, useSelector } from "react-redux";
-import useAction from "../../../redux/useActions";
+
 import Product from "./Product/Product";
 import TableLocation from "./TableLocation";
 import Order from "./Order";
@@ -60,7 +59,7 @@ const OperationOrderPage: React.FC<props> = ({invoice_details, setInvoiceDetails
             key={"location"}
             className="tab-pane"
           >
-            <TableLocation invoice_details={invoice_details} setInvoiceDetails={setInvoiceDetails} />,
+            <TableLocation  setInvoiceDetails={setInvoiceDetails} />,
           </Tabs.TabPane>
       </Tabs>
     </div>

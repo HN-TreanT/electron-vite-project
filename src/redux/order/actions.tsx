@@ -1,4 +1,3 @@
-import { type } from "os";
 
 const types = {
     SELECTED_ORDER: "order/selected-order"

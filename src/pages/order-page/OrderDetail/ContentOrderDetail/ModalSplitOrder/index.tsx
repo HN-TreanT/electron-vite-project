@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { Form, Row, Col, Modal, Input, DatePicker, Select, Button, Switch, message,Table } from 'antd'
+import  { Fragment, useEffect, useState } from "react";
+import { Form, Row, Col, Modal, Input, Select, Button, message,Table } from 'antd'
 import { invoiceServices } from "../../../../../utils/services/invoiceService";
 import { ColumnProps } from "antd/es/table";
 import { convertPrice } from "../../../../../utils/helper/convertPrice";
@@ -135,20 +135,20 @@ const ModalSplitOrder = (props: Props) => {
                 }).catch((err: any) => {
                     console.log(err)
                 })
-                message.success("Tách hóa đơn thành công")
+                messageApi.success("Tách hóa đơn thành công")
                 handleModal()
                 form.resetFields()
                 setInputValues({}); 
             } else if(!res_create_new_order.status) {
-                message.error("Tạo hóa đơn mới thất bại")
+                messageApi.error("Tạo hóa đơn mới thất bại")
             } else {
-                message.error("Tách hóa đơn thất bại")
+                messageApi.error("Tách hóa đơn thất bại")
             }
 
         
         } catch (err: any) {
             console.log(err)
-            message.success("Tách hóa đơn thất bại")
+            messageApi.success("Tách hóa đơn thất bại")
         }
 
        
@@ -160,7 +160,7 @@ const ModalSplitOrder = (props: Props) => {
             dataIndex: "ID",
             width: 30,
             align: 'center',
-            render: (text, record, index) => <span>{index + 1}</span>
+            render: (text, record, index) => <span>{index + 1}<p hidden>{text}{record}</p></span>
         },
         {
             title: "Tên mặt hàng",

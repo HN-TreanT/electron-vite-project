@@ -14,7 +14,7 @@ interface props {
     handleCreateCustomer: any
 }
 
-const ModalAddCustomer: React.FC<props> = ({open,handleModal, formParent, handleCreateCustomer }) => {
+const ModalAddCustomer: React.FC<props> = ({open,handleModal, handleCreateCustomer }) => {
     const [form] = Form.useForm()
     const [messageApi, contextHolder] = message.useMessage();
 
@@ -24,13 +24,14 @@ const ModalAddCustomer: React.FC<props> = ({open,handleModal, formParent, handle
     }
     const onFinish = (values: any) => {
         createCustomer(values).then((res: any) => {
-            message.success("Thêm khách hàng thành công")
+            messageApi.success("Thêm khách hàng thành công")
             if(res.status) {
                 handleCreateCustomer(res.data.id)
                 handlClose()
             }
         }).catch ((err: any) => {
-            message.error("Thêm khách hàng thất bại")
+            console.log(err)
+            messageApi.error("Thêm khách hàng thất bại")
         })
 
     }
@@ -64,6 +65,7 @@ const ModalAddCustomer: React.FC<props> = ({open,handleModal, formParent, handle
                              {
                                  validator: (rule, value) => {
                                      if (value && value.trim() === '') {
+                                        console.log(rule)
                                          return Promise.reject('Không được nhập toàn dấu cách')
                                      }
                                      return Promise.resolve()

@@ -1,4 +1,4 @@
-import { type } from "os";
+
 
 const types = {
     LOAD_DATA: "/product/load-data",
@@ -42,6 +42,7 @@ const action = {
     deleteProduct: (productId: any) => {
         return {
             type: types.DELETE_PRODUCT,
+            payload: {productId}
         }
     }
 };

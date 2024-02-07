@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Col, MenuProps, Row, Dropdown, message } from "antd";
+import { Col, MenuProps, Row, Dropdown } from "antd";
 import { UserOutlined, LogoutOutlined } from "@ant-design/icons"
 import {  useSelector } from "react-redux";
 import OrderDetail from "./OrderDetail";
@@ -11,7 +11,7 @@ import "./OrderPage.scss";
 import { RouterLinks } from "../../const/RouterLinks";
 
 const ChefPage: React.FC = () => {
-  const [messageApi, contextHolder] = message.useMessage();
+
   const navigate = useNavigate()
 
   const {socket} = useContext(AppContext)
@@ -56,11 +56,6 @@ const ChefPage: React.FC = () => {
   const selectedOrder = useSelector((state:any) => state.order.selectedOrder)
   const [invoice_details, setInvoiceDetails] = useState<any>([])
   const [id_tables, setIdTables] = useState([])
-  const hanldeSetInvoiceDetails = (data: any) => {
-      console.log(data)
-      setInvoiceDetails(data)
-    
-  }
 
   
  
@@ -87,11 +82,10 @@ const ChefPage: React.FC = () => {
   }, [selectedOrder])
   return (
     <div className="order-page">
-      {contextHolder}
       <div className="content-order-page">
         <Row gutter={[20, 20]}>
           <Col span={15}>
-            <OperationOrderPage hanldeSetInvoiceDetails={hanldeSetInvoiceDetails} invoice_details={invoice_details} setInvoiceDetails={setInvoiceDetails} />
+            <OperationOrderPage />
           </Col>
           <Col span={9}>
             <OrderDetail id_tables={id_tables} setIdTables={setIdTables} invoice_details={invoice_details} setInvoiceDetails={setInvoiceDetails}  />

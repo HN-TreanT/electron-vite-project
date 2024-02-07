@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { Row, Col, Image, Pagination, Select, Spin, message } from "antd";
+import { Row, Col, Image, Pagination, Spin, message } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faFileInvoiceDollar} from "@fortawesome/free-solid-svg-icons"
 import ItemOrder from "../../ItemOrder/ItemOrder";
@@ -37,7 +37,7 @@ const Order: React.FC = () => {
           //thanh_toan: "chua",
           status: [0]
         }))
-        message.warning(`Bàn ${data?.table} thay đổi`)
+        messageApi.warning(`Bàn ${data?.table} thay đổi`)
       }
     })
 

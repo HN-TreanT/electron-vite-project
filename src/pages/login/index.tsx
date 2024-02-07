@@ -27,11 +27,11 @@ const Login = () => {
         localStorage.setItem("refresh_token", res.data.refresh_token)
         navigate(RouterLinks.HOME_PAGE)
       } else {
-        message.error(res.message)
+        messageApi.error(res.message)
       }
     } catch (err) {
       console.log(err);
-      message.error("Đăng nhập thất bại")
+      messageApi.error("Đăng nhập thất bại")
     }
   }
   

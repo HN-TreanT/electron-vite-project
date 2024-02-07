@@ -1,6 +1,6 @@
-import { all, fork, put, select, takeEvery } from "redux-saga/effects";
-import actions from "./actions";
-import stateActions from "../state/actions"
+import { all, fork } from "redux-saga/effects";
+// import actions from "./actions";
+// import stateActions from "../state/actions"
 
 function* listen() {
     // yield takeEvery(actions.types.LOAD_DATA, saga_loadData);

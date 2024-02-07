@@ -1,4 +1,4 @@
-import createApiServices from "../createApiService";
+import createApiServices from "../createApiServices"
 const api = createApiServices();
 
 const getDeChInventory =  (params: any,) => {

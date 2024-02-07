@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useContext } from "react";
+import  { Fragment, useEffect, useState, useContext } from "react";
 import { Row, Col, Button, Select, Form, message } from "antd";
 import "./ContentOrderDetail.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -86,9 +86,9 @@ const ContentOrderDetail = (props: props) => {
           //thanh_toan: "chua",
           status: [0]
         }))
-        message.success("Thông báo thành công")
+        messageApi.success("Thông báo thành công")
     } else {
-        message.error("Thông báo thất bại")
+        messageApi.error("Thông báo thất bại")
     }
  })
 

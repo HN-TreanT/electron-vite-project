@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Input, Form } from "antd";
+import React from "react";
+import { Row, Col } from "antd";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
 import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
 import "./ItemOrderDetail.scss";
 import { convertPrice } from "../../../../../utils/helper/convertPrice";

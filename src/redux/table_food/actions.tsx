@@ -1,4 +1,4 @@
-import { type } from "os";
+
 
 const types = {
     LOAD_DATA: "table_food/load_data",

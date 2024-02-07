@@ -15,13 +15,14 @@ const OrderPage: React.FC = () => {
  const dispatch = useDispatch()
  const navigate = useNavigate()
  const {socket} = useContext(AppContext)
+ const [messageApi, contextHolder] = message.useMessage();
  useEffect(() => {
     socket.disconnect()
     socket.connect()
  }, [socket])
  socket.off("announce_success").on("announce_success", function (data: any) {
   if(data?.message === "success") {
-    message.success(`Yêu cầu mã #${data?.id_invoice} hoàn thành` )
+    messageApi.success(`Yêu cầu mã #${data?.id_invoice} hoàn thành` )
     dispatch(actions.InvoiceActions.loadData({
       page: 1,
       size: 6,  
@@ -29,7 +30,7 @@ const OrderPage: React.FC = () => {
     }))
 } 
  })
-  const [messageApi, contextHolder] = message.useMessage();
+ 
   const handlLogout = () => {
     localStorage.clear()
     navigate(RouterLinks.LOGIN)
@@ -92,7 +93,7 @@ const OrderPage: React.FC = () => {
     
      invoiceServices.update(selectedOrder?.id, dataSubmit).then((res: any) => {
         if (res.status) {
-         message.success("Chỉnh sửa thành công")
+         messageApi.success("Chỉnh sửa thành công")
              invoiceServices.getById(res.data.id).then((res: any) => {
                    if(res.status) {
                     dispatch(actions.OrderActions.selectedOrder(res.data))
@@ -103,7 +104,7 @@ const OrderPage: React.FC = () => {
         }
      }).catch((err: any) => {
       console.log(err)
-         message.error("Chỉnh sửa thất bại")
+         messageApi.error("Chỉnh sửa thất bại")
      })
     
   }

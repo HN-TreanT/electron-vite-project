@@ -43,7 +43,8 @@ const OrderDetail: React.FC<props> = (props) => {
     })
   }
   const onChange = (key: string) => {
-    //console.log(key);
+
+    console.log(key);
   };
   const onEdit = async () => {
     dispatch(actions.OrderActions.selectedOrder({

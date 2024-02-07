@@ -8,7 +8,6 @@ import {
   Image,
   Form,
   Input,
-  Modal,
   Spin,
 } from "antd";
 // import tableImage0 from "../../../../assets/dinning-table_0.png";
@@ -24,7 +23,6 @@ import {
   faMagnifyingGlass,
   faTable,
 } from "@fortawesome/free-solid-svg-icons";
-import { tableServices } from "../../../../utils/services/tableServices";
 import { invoiceServices } from "../../../../utils/services/invoiceService";
 const items: MenuProps["items"] = [
   {
@@ -42,10 +40,10 @@ const items: MenuProps["items"] = [
 ];
 
 interface props {
-  invoice_details: any[],
+  // invoice_details: any[],
   setInvoiceDetails: any,
 }
-const TableLocation: React.FC<props> = ({invoice_details, setInvoiceDetails}) => {
+const TableLocation: React.FC<props> = ({ setInvoiceDetails}) => {
   const dispatch = useDispatch()
   const actions = useAction()
   const selectedOrder = useSelector((state:any) => state.order.selectedOrder)

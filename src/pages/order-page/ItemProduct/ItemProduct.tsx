@@ -1,16 +1,15 @@
 import React from "react";
 import { Image } from "antd";
-import { useDispatch, useSelector } from "react-redux";
-import useAction from "../../../redux/useActions";
+// import { useDispatch, useSelector } from "react-redux";
+// import useAction from "../../../redux/useActions";
 import "./ItemProduct.scss";
 import { convertPrice } from "../../../utils/helper/convertPrice";
 interface props {
   invoice_details: any[],
   setInvoiceDetails: any,
   product: any,
-  hanldeSetInvoiceDetails: any
 }
-const ItemProduct: React.FC<props> = ({ product, invoice_details, setInvoiceDetails, hanldeSetInvoiceDetails }) => {
+const ItemProduct: React.FC<props> = ({ product, invoice_details, setInvoiceDetails }) => {
   const handleClick = (data: any) => {
     const new_detail = {
       id_product: data?.id,

@@ -1,7 +1,7 @@
 import React, { Fragment, useContext, useEffect, useRef, useState } from 'react';
 // import './index.css';
 import type { InputRef } from 'antd';
-import { Button, Col, Form, Input, Modal, Popconfirm, Row, Select, Table, message } from 'antd';
+import { Button, Col, Form, Input, Modal, Row, Select, Table } from 'antd';
 import type { FormInstance } from 'antd/es/form';
 import FormItem from 'antd/es/form/FormItem';
 
@@ -116,10 +116,10 @@ interface Props {
     handleModal: Function,
     id_invoice_old: any
 }
-const ModalSplitTable: React.FC<Props> = ({ curData, open, handleModal, id_invoice_old }) => {
+const ModalSplitTable: React.FC<Props> = ({  open, handleModal }) => {
   const [form] = Form.useForm()
-  const [messageApi, contextHolder] = message.useMessage();
-  const [tables, setTables] = useState([])
+  // const [messageApi, contextHolder] = message.useMessage();
+  // const [tables, setTables] = useState([])
   const [dataSource, setDataSource] = useState<DataType[]>([
     {
       key: '0',
@@ -135,7 +135,7 @@ const ModalSplitTable: React.FC<Props> = ({ curData, open, handleModal, id_invoi
     },
   ]);
 
-  const [count, setCount] = useState(2);
+
   const defaultColumns: (ColumnTypes[number] & { editable?: boolean; dataIndex: string })[] = [
     {
       title: 'Tên mặt hàng',
@@ -163,7 +163,7 @@ const ModalSplitTable: React.FC<Props> = ({ curData, open, handleModal, id_invoi
 
 
   const onFinish = (values: any) => {
-    
+    console.log(values)
   }
 
 
@@ -203,7 +203,7 @@ const ModalSplitTable: React.FC<Props> = ({ curData, open, handleModal, id_invoi
 
   return (
     <Fragment>
-        {contextHolder}
+        {/* {contextHolder} */}
         <Modal
             title={"Ghép đơn"}
             width={700}
@@ -231,7 +231,9 @@ const ModalSplitTable: React.FC<Props> = ({ curData, open, handleModal, id_invoi
                                 }
                              ]}                      
                         >
-                            <Select mode="multiple" options={tables} style={{width:"100%"}} allowClear showSearch filterOption={(input, option: any) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())} placeholder='Chọn bàn ' />
+                            <Select mode="multiple" 
+                            // options={tables} 
+                            style={{width:"100%"}} allowClear showSearch filterOption={(input, option: any) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())} placeholder='Chọn bàn ' />
                         </FormItem>
                      </Col>
             

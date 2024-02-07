@@ -1,9 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Input, Form } from "antd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
-import { PlusCircleOutlined, MinusCircleOutlined } from "@ant-design/icons";
+import React from "react";
+import { Row, Col } from "antd";
 import "./ItemOrderDetail.scss";
 import { convertPrice } from "../../../../../utils/helper/convertPrice";
 interface props {
@@ -11,7 +7,7 @@ interface props {
   invoice_details: any[],
   setInvoiceDetails: any
 }
-const ItemOrderDetail: React.FC<props> = ({ data, invoice_details, setInvoiceDetails }) => {
+const ItemOrderDetail: React.FC<props> = ({ data }) => {
   
   return (
     <div  className="item-order-detail">

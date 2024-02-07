@@ -13,7 +13,7 @@ interface props {
   id_tables: any[]
 }
 const OrderDetail: React.FC<props> = (props) => {
-  const {invoice_details, setInvoiceDetails, handleSaveOrder, setIdTables, id_tables} = props
+  const {invoice_details, setInvoiceDetails, handleSaveOrder} = props
   const actions = useAction()
   const dispatch =  useDispatch()
   const [customer, setCustomer] = useState([])
@@ -43,9 +43,9 @@ const OrderDetail: React.FC<props> = (props) => {
       console.log(err)
     })
   }
-  const onChange = (key: string) => {
-    //console.log(key);
-  };
+  // const onChange = (key: string) => {
+  //   //console.log(key);
+  // };
   const onEdit = async () => {
     dispatch(actions.OrderActions.selectedOrder({
       invoice_details: [
@@ -66,7 +66,7 @@ const OrderDetail: React.FC<props> = (props) => {
       <Tabs
        
         type="editable-card"
-        onChange={onChange}
+        // onChange={onChange}
         items={[
           { label: `Yêu cầu ${name_order}`, 
           children: <ContentOrderDetail setCustomer={setCustomer} invoice_details={invoice_details} setInvoiceDetails={setInvoiceDetails} customers={customer} handleSaveOrder={handleSaveOrder} />,
